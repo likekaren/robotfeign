@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+
+		<title>Dashboard Template for Bootstrap</title>
+		<!-- Bootstrap core CSS -->
+		<link href="asserts/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Custom styles for this template -->
+		<link href="asserts/css/dashboard.css" rel="stylesheet">
+		<link href="asserts/styles/bootstrap.css" rel="stylesheet"
+			  type="text/css">
+		<link href="asserts/styles/robot.css" rel='stylesheet' type='text/css' />
+		<link rel="stylesheet" href="asserts/styles/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css"
+			  href="asserts/jEasyUIcustom/uimaker/easyui.css">
+		<link rel="stylesheet" type="text/css"
+			  href="assert/jEasyUIcustom/uimaker/icon.css">
+		<link rel="stylesheet" type="text/css"
+			  href="assert/css/jquery.grid.css" />
+		<link rel="stylesheet" type="text/css"
+			  href="arrest/css/table.css" />
+
+		<style type="text/css" mce_bogus="1">
+			table th {
+				white-space: nowrap;
+			}
+
+			table td {
+				white-space: nowrap;
+			}
+
+			body,table {
+				font-size: 18px;
+			}
+
+			table {
+				empty-cells: show;
+				border-collapse: collapse;
+				margin: 0 auto;
+			}
+
+			table.tab_css_1 {
+				border: 1px solid #cad9ea;
+				color: #666;
+				margin-left: 1px;
+			}
+
+			table.tab_css_1 th {
+				background-repeat: repeat-x;
+				height: 40px;
+			}
+
+			table.tab_css_1 td,table.tab_css_1 th {
+				border: 1px solid #cad9ea;
+				padding: 0 1em 0;
+			}
+
+			table.tab_css_1 tr.tr_css {
+				background-color: #f5fafe;
+				height: 40px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<form id="robotForm">
+			<INPUT type="hidden" name="robotSolrVO.total" id = "solrval" value=""/>
+		</form>
+		<form id = "form1">
+			<!--<INPUT type="hidden" name="robotSolrVO.total" />-->
+		<!--引入抽取的topbar-->
+		<div th:replace="commons/bar::topbar"></div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<!--引入侧边栏-->
+				<div th:replace="commons/bar::#sidebar(activeUri='main')"></div>
+
+				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+					<div class="content">
+
+						<div class="title">多功能机器人看板</div>
+						<div class="robot">
+							<img src="asserts/images/robot.png" alt=""  />
+						</div>
+
+
+
+							<div class="panel panel-info"  style="width: 943px;">
+								<div class="panel-heading"
+									 style="font-size: 22px;  text-align: center;">数据监控</div>
+								<div style="overflow: auto; height: 530px; width: 943px">
+									<TABLE border=0 cellSpacing=0 cellPadding=0 width=1800px align=center>
+
+												<table id="robotlist" ></table>
+
+									</TABLE>
+								</div>
+							</div>
+
+
+
+
+
+					</div>
+
+					<div style="width: 100%;height: 40px;background: black;float: left;text-align: center;;line-height: 40px;
+		color: white;margin-top: 80px">
+						武汉天之逸科技有限公司 研制 &nbsp;
+					</div>
+		</form>
+
+		<!-- Bootstrap core JavaScript
+    ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script type="text/javascript" src="asserts/js/jquery.min.js"></script>
+		<!--<script type="text/javascript" src="asserts/js/jquery-3.2.1.slim.min.js"></script>-->
+		<script type="text/javascript" src="asserts/js/popper.min.js"></script>
+		<script type="text/javascript" src="asserts/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="asserts/js/jquery.easyui.min.js"></script>
+
+		<!-- Icons -->
+		<script type="text/javascript" src="asserts/js/feather.min.js"></script>
+		<script>
+			feather.replace()
+		</script>
+
+		<script>
+			$(".deleteBtn").click(function () {
+			    $("#deleteEmpForm").attr("action",$(this).attr("del_uri")).submit();
+			    return false;
+            })
+
+		</script>
+
+		<!-- Graphs -->
+
+
+	</body>
+
+	<script type="text/javascript">
+        //datagrid列定义
+        var columns_v = [ [
+            // {
+            //     field : 'id',//对应json中的key
+            //     title : '#',
+            //     width : 30
+            // },
+            {
+                field : 'rname',//对应json中的key
+                title : '机器人名称',
+                width : 186,
+
+            },
+            {
+                field : 'status',//对应json中的key
+                title : '机器人状态',
+                width : 90
+            },
+            {
+                field : 'rnote',//对应json中的key
+                title : '异常状况',
+                width : 90
+            },
+            {
+                field : 'ex1',//对应json中的key
+                title : '电机1转速',
+                width : 90
+            },
+            {
+                field : 'ex2',//对应json中的key
+                title : '电机2转速',
+                width : 90
+            },
+            {
+                field : 'ex3',//对应json中的key
+                title : '电机3转速',
+                width : 90
+            },
+            {
+                field : 'ex4',//对应json中的key
+                title : '电机4转速',
+                width : 90
+            },
+            {
+                field : 'ex5',//对应json中的key
+                title : '电机5转速',
+                width : 90
+            },
+            {
+                field : 'ex6',//对应json中的key
+                title : '电机6转速',
+                width : 90
+            }
+
+
+        ] ];
+
+        //datagrid 加载数据
+        $(function() {
+            $('#robotlist').datagrid({
+				title : '机器人监控',
+                nowrap : true,//单元格中的数据不换行，如果为true表示不换行，不换行情况下数据加载性能高，如果为false就是换行，换行数据加载性能不高
+                striped : true,//条纹显示效果
+                url : '/robotlist',//加载数据的连接，引连接请求过来是json数据
+                idField : 'id',//此字段很重要，数据结果集的唯一约束(重要)，如果写错影响 获取当前选中行的方法执行
+				loadMsg : '',
+                columns : columns_v,
+                pagination : true,//是否显示分页
+                rownumbers : true,//是否显示行号
+                pageList : [ 10, 30, 45 ],
+                height:530,
+
+            });
+
+        });
+
+        //查询方法
+        function querystandardlist() {
+            //datagrid的方法load方法要求传入json数据，最终将 json转成key/value数据传入action
+            //将form表单数据提取出来，组成一个json
+            var formdata = $("#robotForm").serializeJson();
+            $('#robotlist').datagrid('load', formdata);
+            console.log(formdata);
+        }
+
+
+		// var str = window.location.href;
+        // // console.log(str);
+		// var arrStr = window.location.href.split("=");
+		// var strtotal0 = decodeURI(window.location.href.split("=")[1]);
+		// var strtotal = "";
+		// if(strtotal0 == "undefined"){
+		//     strtotal = "";
+		// }else {
+		//     strtotal = strtotal0;
+		// }
+		// console.log(strtotal);
+
+        var str = window.location.href;
+        // console.log(str);
+        var arrStr = window.location.href.split("=");
+        var strtotal = decodeURI(window.location.href.split("=")[1]);
+
+        console.log(strtotal);
+
+
+        // $("#solrval").val(strtotal);
+
+        // window.onload="querystandardlist"
+		$(document).ready(function () {
+            $("#solrval").val(strtotal);
+			querystandardlist()
+            // console.log(strtotal);
+        });
+
+        $.fn.serializeJson=function(){
+            var serializeObj={};
+            var array=this.serializeArray();
+            var str=this.serialize();
+            $(array).each(function(){
+                if(serializeObj[this.name]){
+                    if($.isArray(serializeObj[this.name])){
+                        serializeObj[this.name].push(this.value);
+                    }else{
+                        serializeObj[this.name]=[serializeObj[this.name],this.value];
+                    }
+                }else{
+                    serializeObj[this.name]=this.value;
+                }
+            });
+            return serializeObj;
+        };
+
+
+	</script>
+
+</html>

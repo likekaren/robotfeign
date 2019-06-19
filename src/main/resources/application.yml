@@ -1,0 +1,9 @@
+spring:
+
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    initialization-mode: always
+
+
+

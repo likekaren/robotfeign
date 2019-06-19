@@ -1,0 +1,62 @@
+* {
+    margin: 0px auto;
+}
+
+body {
+
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100%;
+   background-color: black;
+}
+.content .title {
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    text-align: center;
+    font-family:"Microsoft YaHei";
+    font-size: 45px;
+    color: red;
+}
+.car {
+     background: url(../images/sum.png) no-repeat; 
+}
+
+.content table{
+    width: 90%;
+    height: 500px;
+    border-collapse: collapse;
+    border: 8px solid red;
+    margin-top: 60px;
+    text-align:center;
+    color: red;
+    font-family:"Microsoft YaHei";
+    font-size: 40px;
+}
+.content th{
+    border: 5px solid red;
+      height: 80px;
+}
+
+.content tr{
+    border: 5px solid red;
+    
+}
+
+.content td{
+    border: 5px solid red;
+    height: 110px;
+}
+
+.show_time {
+    width: 440px;;
+    height: 50px;
+    color: red;
+    margin: 0 auto;
+    margin-top: 15px;
+    font-family: "微软雅黑";
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+   
+}
